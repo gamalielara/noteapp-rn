@@ -6,7 +6,6 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-// import searchIcon from "../../assets/svg/search.svg";
 import styles from "./styles";
 import SearchIcon from "../../assets/svg/SearchIcon";
 import InfoIcon from "../../assets/svg/InfoIcon";
