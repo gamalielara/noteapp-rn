@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     position: "absolute",
   },
-  buttonsContainer: {
+  topButtonsContainer: {
     display: "flex",
     gap: 10,
     marginLeft: "auto",
@@ -34,6 +34,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     height: 100,
     alignItems: "center",
+  },
+  notesContainer: {
+    padding: 10,
   },
 });
 
