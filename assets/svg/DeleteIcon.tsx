@@ -4,15 +4,11 @@ import Svg, { Path } from "react-native-svg";
 const DeleteIcon = () => (
   <Svg
     height="100%"
-    width="100%"
     viewBox="-10.5 -5 50 50"
     fill="none"
     style={{
-      width: 50,
-      height: 50,
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
+      maxHeight: 35,
+      aspectRatio: 1,
     }}
   >
     <Path

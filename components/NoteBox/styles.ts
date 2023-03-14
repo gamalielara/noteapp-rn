@@ -1,12 +1,14 @@
 import { StyleSheet } from "react-native";
+import { Colors } from "../../utils/colors";
 
 export const styles = StyleSheet.create({
   noteBox: {
     width: "100%",
     minHeight: 75,
     maxHeight: 100,
-    padding: 10,
-    backgroundColor: "gray",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    backgroundColor: Colors.PRIMARY,
     borderRadius: 10,
     marginVertical: 15,
     display: "flex",
@@ -24,7 +26,7 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 7.5,
     color: "white",
-    whiteSpace: "wrap",
+    // whiteSpace: "wrap",
   },
   noteModifiedText: {
     color: "white",
@@ -36,14 +38,18 @@ export const styles = StyleSheet.create({
     minWidth: 0,
   },
   deleteNoteBtn: {
-    padding: 10,
-    backgroundColor: "#3B3B3B",
-    borderRadius: 15,
-    width: 45,
-    height: 45,
+    minHeight: 75,
+    maxHeight: 100,
+    padding: 20,
+    backgroundColor: Colors.RED,
+    borderRadius: 10,
+    marginVertical: 15,
     display: "flex",
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    width: "100%",
     boxSizing: "border-box",
+    marginLeft: 20,
   },
 });

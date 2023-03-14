@@ -4,8 +4,14 @@ import InfoIcon from "../../assets/svg/InfoIcon";
 import styles from "./styles";
 import NoteBox from "../../components/NoteBox";
 import NOTES_DUMMY_DATA from "../../mocks/notes";
+import { useState } from "react";
+import { Swipeable } from "react-native-gesture-handler";
 
 const HomeScreen = () => {
+  const [currentlyOpenedNotes, setCurrentlyOpenedNotes] =
+    useState<Swipeable | null>(null);
+  const notes: Swipeable[] = [];
+
   return (
     <View style={styles.mainContainer}>
       <View style={styles.homeHeader}>
@@ -26,8 +32,16 @@ const HomeScreen = () => {
       <View style={styles.notesContainer}>
         <FlatList
           data={NOTES_DUMMY_DATA}
-          renderItem={({ item }) => (
-            <NoteBox title={item.title} dateModified={item.created_at} />
+          renderItem={({ item, index }) => (
+            <NoteBox
+              index={index}
+              title={item.title}
+              notes={notes}
+              setCurrentlyOpenedNotes={setCurrentlyOpenedNotes}
+              currentlyOpenedNotes={currentlyOpenedNotes}
+              dateModified={item.created_at}
+              onDeleteNote={() => {}}
+            />
           )}
           keyExtractor={(note) => note.id.toString()}
         />
