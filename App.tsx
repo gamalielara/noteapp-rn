@@ -1,5 +1,3 @@
-import { SafeAreaView, StyleSheet } from "react-native";
-import HomePage from "./screens/HomeScreen";
 import { useState } from "react";
 import AppLoading from "expo-app-loading";
 import { loadFonts } from "./utils/helpers";
@@ -8,6 +6,7 @@ import LoginRegisterScreen from "./screens/LoginRegisterScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
+import { AuthContext, AuthContextProvider } from "./modules/auth/authContext";
 
 export default function App() {
   const [isFontLoaded, setIsFontLoaded] = useState(false);
@@ -17,12 +16,14 @@ export default function App() {
   if (isFontLoaded) {
     return (
       <SafeAreaProvider>
-        <NavigationContainer>
-          <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name={"Login"} component={LoginRegisterScreen} />
-            <Stack.Screen name={"Home"} component={HomeScreen} />
-          </Stack.Navigator>
-        </NavigationContainer>
+        <AuthContextProvider>
+          <NavigationContainer>
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
+              <Stack.Screen name={"Login"} component={LoginRegisterScreen} />
+              <Stack.Screen name={"Home"} component={HomeScreen} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </AuthContextProvider>
       </SafeAreaProvider>
     );
   } else {

@@ -4,8 +4,10 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import GoogleIcon from "../../assets/svg/GoogleIcon";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { AuthContext } from "../../modules/auth/authContext";
+import { setUser } from "../../modules/auth/authAction";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -13,7 +15,7 @@ const LoginRegisterScreen: React.FC<NativeStackScreenProps<any, any>> = ({
   navigation,
 }) => {
   const [accToken, setAccToken] = useState<any>(null);
-  const [user, setUser] = useState<any>(null);
+  const { dispatch, user } = useContext(AuthContext);
 
   const [request, response, promptAsync] = Google.useAuthRequest({
     webClientId:
@@ -33,6 +35,12 @@ const LoginRegisterScreen: React.FC<NativeStackScreenProps<any, any>> = ({
     }
   }, [response, accToken]);
 
+  useEffect(() => {
+    if (user) {
+      navigation.navigate("Home");
+    }
+  }, [accToken]);
+
   const fetchUserInfo = async () => {
     const res = await fetch("https://www.googleapis.com/userinfo/v2/me", {
       headers: {
@@ -40,13 +48,18 @@ const LoginRegisterScreen: React.FC<NativeStackScreenProps<any, any>> = ({
       },
     });
 
-    const userInfo = await res.json();
-    setUser(userInfo);
+    const userResponse = await res.json();
+    const userInfo = {
+      id: userResponse.id,
+      name: userResponse.name,
+      picture: userResponse.picture,
+      email: userResponse.email,
+    };
+    dispatch!(setUser(userInfo));
+    // setUser(userInfo);
   };
 
   const insets = useSafeAreaInsets();
-
-  const showUserInfo = () => console.table(user);
 
   return (
     <View
@@ -61,13 +74,12 @@ const LoginRegisterScreen: React.FC<NativeStackScreenProps<any, any>> = ({
           disabled={!request}
           style={styles.loginButton}
           onPress={() => {
-            promptAsync().then(() => navigation.navigate("Home"));
+            promptAsync();
           }}
         >
           <GoogleIcon />
           <Text style={styles.loginButtonText}>Sign In With Google</Text>
         </TouchableOpacity>
-        {user && console.table(user)}
       </View>
     </View>
   );
