@@ -23,14 +23,14 @@ export const styles = StyleSheet.create({
   },
   noteTitleText: {
     fontSize: 16,
-    fontWeight: "bold",
     marginBottom: 7.5,
     color: "white",
-    // whiteSpace: "wrap",
+    fontFamily: "snf-bold",
   },
   noteModifiedText: {
     color: "white",
     fontSize: 12.5,
+    fontFamily: "snf",
   },
   deleteNoteBtnContainer: {
     flex: 1,
@@ -51,5 +51,8 @@ export const styles = StyleSheet.create({
     width: "100%",
     boxSizing: "border-box",
     marginLeft: 20,
+  },
+  lastNote: {
+    marginBottom: 100,
   },
 });

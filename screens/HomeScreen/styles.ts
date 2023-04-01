@@ -1,19 +1,20 @@
 import { StyleSheet } from "react-native";
+import { Colors } from "../../utils/colors";
 
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: "#252525",
-    fontFamily: "san-fransisco",
+    backgroundColor: Colors.BACKGROND,
+    paddingHorizontal: 10,
   },
   homeText: {
     color: "white",
     fontSize: 30,
     position: "absolute",
+    fontFamily: "snf-bold",
   },
   topButtonsContainer: {
     display: "flex",
-    gap: 10,
     marginLeft: "auto",
     marginRight: 10,
     flexDirection: "row",
@@ -27,16 +28,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  infoButton: {
+    marginRight: 10,
+  },
   homeHeader: {
-    marginHorizontal: 20,
+    marginHorizontal: 5,
     marginTop: 50,
     display: "flex",
     flexDirection: "row",
     height: 100,
     alignItems: "center",
-  },
-  notesContainer: {
-    padding: 10,
   },
 });
 

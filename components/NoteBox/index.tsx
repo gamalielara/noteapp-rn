@@ -33,11 +33,16 @@ const NoteBox: React.FC<NoteBoxInterface> = ({
   setCurrentlyOpenedNotes,
   currentlyOpenedNotes,
 }) => {
+  const isLastNote = index === notes.length - 1;
+
   const renderDeleteButton = () => {
     return (
-      <TouchableOpacity style={styles.deleteNoteBtn} onPress={onDeleteNote}>
+      <View
+        style={[styles.deleteNoteBtn, ...(isLastNote ? [styles.lastNote] : [])]}
+        // onPress={onDeleteNote}
+      >
         <DeleteIcon />
-      </TouchableOpacity>
+      </View>
     );
   };
 
@@ -56,7 +61,9 @@ const NoteBox: React.FC<NoteBoxInterface> = ({
         rightThreshold={-500}
         onSwipeableOpen={closeOtherNotes}
       >
-        <TouchableHighlight style={styles.noteBox}>
+        <TouchableHighlight
+          style={[styles.noteBox, ...(isLastNote ? [styles.lastNote] : [])]}
+        >
           <View style={styles.noteDesc}>
             <Text style={styles.noteTitleText} numberOfLines={2}>
               {title}
