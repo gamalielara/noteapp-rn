@@ -6,7 +6,7 @@ import LoginRegisterScreen from "./screens/LoginRegisterScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
-import { AuthContext, AuthContextProvider } from "./modules/auth/authContext";
+import { AuthContextProvider } from "./modules/auth/authContext";
 
 export default function App() {
   const [isFontLoaded, setIsFontLoaded] = useState(false);
