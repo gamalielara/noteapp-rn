@@ -9,14 +9,14 @@ import SearchIcon from "../../assets/svg/SearchIcon";
 import InfoIcon from "../../assets/svg/InfoIcon";
 import styles from "./styles";
 import NoteBox from "../../components/NoteBox";
-import NOTES_DUMMY_DATA from "../../mocks/notes";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Swipeable } from "react-native-gesture-handler";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { NoteInterface } from "../../utils/interfaces";
 import { USER_ID } from "../../utils/constants";
+import withRedirectAuth from "../../hoc/withRedirectAuth";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
-const HomeScreen = () => {
+const HomeScreen: React.FC<NativeStackScreenProps<any>> = ({ navigation }) => {
   const [currentlyOpenedNotes, setCurrentlyOpenedNotes] =
     useState<Swipeable | null>(null);
   const [notesToShow, setNotesToShow] = useState<NoteInterface[] | null>(null);
@@ -51,7 +51,7 @@ const HomeScreen = () => {
         <View style={styles.homeHeader}>
           <Text style={styles.homeText}>NoteApp</Text>
           <View style={styles.topButtonsContainer}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
               <View style={[styles.button, styles.infoButton]}>
                 <InfoIcon />
               </View>
@@ -84,4 +84,4 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default withRedirectAuth(HomeScreen);
