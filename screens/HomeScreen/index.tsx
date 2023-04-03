@@ -29,9 +29,7 @@ const HomeScreen: React.FC<NativeStackScreenProps<any>> = ({ navigation }) => {
   };
 
   const fetchNotes = async () => {
-    const res = await fetch(
-      `https://noteapp-31317-default-rtdb.asia-southeast1.firebasedatabase.app/users/${USER_ID}/notes.json`
-    );
+    const res = await fetch(`http://localhost:1991/notes`);
     const data = await res.json();
 
     const notes: NoteInterface[] = [];

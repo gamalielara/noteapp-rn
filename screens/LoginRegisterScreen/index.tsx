@@ -8,6 +8,7 @@ import { useContext, useEffect, useState } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { AuthContext } from "../../modules/auth/authContext";
 import { setUser } from "../../modules/auth/authAction";
+import useFetchUserNotes from "../../hooks/useFetchUserNotes";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -60,6 +61,8 @@ const LoginRegisterScreen: React.FC<NativeStackScreenProps<any, any>> = ({
   };
 
   const insets = useSafeAreaInsets();
+
+  useFetchUserNotes();
 
   return (
     <View
