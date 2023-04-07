@@ -3,6 +3,7 @@ export enum Colors {
   SECONDARY = "#BEBEBE",
   BACKGROND = "#252525",
   RED = "#AF0000",
+  WHITE = "#FFF",
 }
 
 export enum NoteColors {

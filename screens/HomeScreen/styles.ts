@@ -39,6 +39,28 @@ const styles = StyleSheet.create({
     height: 100,
     alignItems: "center",
   },
+  addNoteButton: {
+    borderRadius: 100,
+    backgroundColor: Colors.SECONDARY,
+    width: 60,
+    aspectRatio: 1,
+    position: "absolute",
+    bottom: 25,
+    right: 0,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 0,
+  },
+  plusText: {
+    fontFamily: "snf",
+    fontSize: 35,
+    margin: 0,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 5,
+  },
 });
 
 export default styles;

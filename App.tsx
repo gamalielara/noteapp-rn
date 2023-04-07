@@ -8,6 +8,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
 import { AuthContextProvider } from "./modules/auth/authContext";
 import ProfileScreen from "./screens/ProfileScreen";
+import CreateNoteScreen from "./screens/CreateNoteScreen";
+import { NoteContextProvider } from "./modules/note/noteContext";
 
 export default function App() {
   const [isFontLoaded, setIsFontLoaded] = useState(false);
@@ -18,13 +20,19 @@ export default function App() {
     return (
       <SafeAreaProvider>
         <AuthContextProvider>
-          <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
-              <Stack.Screen name={"Home"} component={HomeScreen} />
-              <Stack.Screen name={"Login"} component={LoginRegisterScreen} />
-              <Stack.Screen name={"Profile"} component={ProfileScreen} />
-            </Stack.Navigator>
-          </NavigationContainer>
+          <NoteContextProvider>
+            <NavigationContainer>
+              <Stack.Navigator screenOptions={{ headerShown: false }}>
+                <Stack.Screen name={"Home"} component={HomeScreen} />
+                <Stack.Screen name={"Login"} component={LoginRegisterScreen} />
+                <Stack.Screen name={"Profile"} component={ProfileScreen} />
+                <Stack.Screen
+                  name={"Create Note"}
+                  component={CreateNoteScreen}
+                />
+              </Stack.Navigator>
+            </NavigationContainer>
+          </NoteContextProvider>
         </AuthContextProvider>
       </SafeAreaProvider>
     );

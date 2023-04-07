@@ -3,12 +3,12 @@ import { Colors } from "../../utils/colors";
 
 export const styles = StyleSheet.create({
   backButton: {
-    width: 35,
+    width: 45,
     aspectRatio: 1,
     backgroundColor: Colors.SECONDARY,
     position: "absolute",
-    top: 10,
-    left: 10,
+    top: 50,
+    left: 20,
     borderRadius: 10,
     display: "flex",
     alignItems: "center",
