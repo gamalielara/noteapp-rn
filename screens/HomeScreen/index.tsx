@@ -11,18 +11,20 @@ import SearchIcon from "../../assets/svg/SearchIcon";
 import InfoIcon from "../../assets/svg/InfoIcon";
 import styles from "./styles";
 import NoteBox from "../../components/NoteBox";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Swipeable } from "react-native-gesture-handler";
 import { NoteInterface } from "../../utils/interfaces";
 import { USER_ID } from "../../utils/constants";
 import withRedirectAuth from "../../hoc/withRedirectAuth";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { NoteContext } from "../../modules/note/noteContext";
 
 const HomeScreen: React.FC<NativeStackScreenProps<any>> = ({ navigation }) => {
   const [currentlyOpenedNotes, setCurrentlyOpenedNotes] =
     useState<Swipeable | null>(null);
-  const [notesToShow, setNotesToShow] = useState<NoteInterface[] | null>(null);
+  // const [notesToShow, setNotesToShow] = useState<NoteInterface[] | null>(null);
+  const { notes: notesToShow } = useContext(NoteContext);
 
   const notes: Swipeable[] = [];
 
@@ -32,21 +34,6 @@ const HomeScreen: React.FC<NativeStackScreenProps<any>> = ({ navigation }) => {
     if (!currentlyOpenedNotes) return;
     currentlyOpenedNotes.close();
   };
-
-  const fetchNotes = async () => {
-    const res = await fetch(`http://localhost:1991/notes`);
-    const data = await res.json();
-
-    const notes: NoteInterface[] = [];
-
-    Object.keys(data).forEach((key) => notes.push(data[key]));
-
-    setNotesToShow(notes as NoteInterface[]);
-  };
-
-  useEffect(() => {
-    fetchNotes();
-  }, []);
 
   return (
     <>

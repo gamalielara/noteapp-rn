@@ -10,8 +10,9 @@ import { AuthContextProvider } from "./modules/auth/authContext";
 import ProfileScreen from "./screens/ProfileScreen";
 import CreateNoteScreen from "./screens/CreateNoteScreen";
 import { NoteContextProvider } from "./modules/note/noteContext";
+import withModal from "./hoc/withModal";
 
-export default function App() {
+function App() {
   const [isFontLoaded, setIsFontLoaded] = useState(false);
 
   const Stack = createNativeStackNavigator();
@@ -46,3 +47,5 @@ export default function App() {
     );
   }
 }
+
+export default withModal(App);

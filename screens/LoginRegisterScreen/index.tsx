@@ -62,8 +62,6 @@ const LoginRegisterScreen: React.FC<NativeStackScreenProps<any, any>> = ({
 
   const insets = useSafeAreaInsets();
 
-  useFetchUserNotes();
-
   return (
     <View
       style={[

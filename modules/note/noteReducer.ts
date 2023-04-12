@@ -6,8 +6,8 @@ export default (
   action: NoteAction
 ): NoteInterface[] => {
   switch (action.type) {
-    case NoteActionType.GET_NOTES:
-      return action.payload as NoteInterface[];
+    case NoteActionType.FETCH_ALL_NOTES:
+      return [...(action.payload as NoteInterface[])];
 
     case NoteActionType.CREATE_NOTE:
       return [...state, action.payload as NoteInterface];
@@ -29,6 +29,7 @@ export default (
         });
       }
 
+    case NoteActionType.GET_NOTES:
     default:
       return [...state];
   }

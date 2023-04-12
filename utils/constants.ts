@@ -9,7 +9,7 @@ export const NOTE_TITILE_CREATE_NEW = "Note Title Here";
 
 export const NOTE_BODY_CREATE_NEW = "Create your notes here....";
 
-export const CLIENT_IP_ADDRESS = "192.168.0.114";
+export const CLIENT_IP_ADDRESS = "192.168.1.4";
 
 const test = {
   sheujebkjebuk: {

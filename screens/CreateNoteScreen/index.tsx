@@ -8,17 +8,20 @@ import {
   NOTE_BODY_CREATE_NEW,
   NOTE_TITILE_CREATE_NEW,
 } from "../../utils/constants";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NoteInterface } from "../../utils/interfaces";
 import EyeIcon from "../../assets/svg/EyeIcon";
 import SaveIcon from "../../assets/svg/SaveIcon";
 import { Colors } from "../../utils/colors";
+import { ModalContext } from "../../hoc/withModal";
 
 const CreateNoteScreen: React.FC = () => {
   const insects = useSafeAreaInsets();
   const [isCreateMode, setIsCreateMode] = useState<boolean>(true);
   const [note, setNote] = useState<NoteInterface | null>(null);
   const [isEditable, setIsEditable] = useState<boolean>(false);
+
+  const { showModal } = useContext(ModalContext);
 
   useEffect(() => {
     if (isCreateMode) {
@@ -38,7 +41,7 @@ const CreateNoteScreen: React.FC = () => {
         <>
           <TouchableOpacity
             style={[styles.button, { marginRight: 10 }]}
-            onPress={() => setIsEditable(false)}
+            onPress={() => showModal(true)}
           >
             <EyeIcon />
           </TouchableOpacity>

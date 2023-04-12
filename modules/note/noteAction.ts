@@ -3,13 +3,20 @@ import { NoteInterface } from "../../utils/interfaces";
 
 export const getAllNotes = () => {
   return {
-    type: NoteActionType,
+    type: NoteActionType.GET_NOTES,
   };
 };
 
-export const addNote = (payload: Required<NoteInterface>) => {
+export const addNotes = (payload: Required<NoteInterface>) => {
   return {
     type: NoteActionType.CREATE_NOTE,
+    payload,
+  };
+};
+
+export const fetchAllNotes = (payload: Required<NoteInterface>) => {
+  return {
+    type: NoteActionType.FETCH_ALL_NOTES,
     payload,
   };
 };

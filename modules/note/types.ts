@@ -7,6 +7,7 @@ export interface NoteAction {
 }
 
 export enum NoteActionType {
+  FETCH_ALL_NOTES,
   GET_NOTES,
   CREATE_NOTE,
   EDIT_NOTE,
