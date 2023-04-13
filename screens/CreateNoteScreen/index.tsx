@@ -89,13 +89,13 @@ const CreateNoteScreen: React.FC = () => {
           style={styles.noteTitle}
           placeholder={NOTE_TITILE_CREATE_NEW}
           editable={isEditable}
-          placeholderTextColor={Colors.WHITE}
+          placeholderTextColor={Colors.WHITE_GREYISH}
         />
         <TextInput
           style={styles.noteBody}
           placeholder={NOTE_BODY_CREATE_NEW}
           editable={isEditable}
-          placeholderTextColor={Colors.WHITE}
+          placeholderTextColor={Colors.WHITE_GREYISH}
           multiline
         />
       </View>

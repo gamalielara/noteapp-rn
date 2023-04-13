@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     position: "absolute",
     top: "40%",
     left: "13%",
-    zIndex: 999999,
+    zIndex: 999,
     backgroundColor: Colors.WHITE,
     borderRadius: 20,
     padding: 20,
@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     opacity: 0.75,
     width: "100%",
     height: "100%",
-    zIndex: 99999,
+    zIndex: 99,
   },
   bottomBottons: {
     // width: "100%",

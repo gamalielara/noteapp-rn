@@ -2,6 +2,7 @@ import { createContext, useEffect, useRef, useState } from "react";
 import {
   Animated,
   Dimensions,
+  Platform,
   Text,
   TouchableOpacity,
   View,
@@ -18,14 +19,12 @@ export default (Componnent: React.FC<any>) => (props: any) => {
 
   useEffect(() => {
     if (showModal) {
-      console.log("SHOW MODAL!");
       Animated.timing(modalPositionAnimation, {
-        toValue: 0,
-        duration: 1000,
+        toValue: 1,
+        duration: 1500,
         useNativeDriver: true,
       }).start();
     } else {
-      console.log("CLOSED");
       Animated.timing(modalPositionAnimation, {
         toValue: height,
         duration: 1000,
@@ -35,7 +34,7 @@ export default (Componnent: React.FC<any>) => (props: any) => {
   }, [showModal]);
 
   const rotatingEnteringModal = modalPositionAnimation.interpolate({
-    inputRange: [0, height / 4, height / 2, height],
+    inputRange: [0.01, height / 4, height / 2, height],
     outputRange: ["0deg", "-90deg", "-170deg", "-180deg"],
   });
 
@@ -48,6 +47,7 @@ export default (Componnent: React.FC<any>) => (props: any) => {
             { translateY: modalPositionAnimation },
             { rotateY: rotatingEnteringModal },
           ],
+          elevation: Platform.OS === "android" ? 999 : 0,
         }}
       >
         <Text>Hei!</Text>
@@ -67,7 +67,14 @@ export default (Componnent: React.FC<any>) => (props: any) => {
           </TouchableOpacity>
         </View>
       </Animated.View>
-      {showModal && <View style={styles.showModalContainer}></View>}
+      {showModal && (
+        <View
+          style={[
+            styles.showModalContainer,
+            { elevation: Platform.OS === "android" ? 99 : 0 },
+          ]}
+        ></View>
+      )}
       {/*<View style={styles.showModalContainer}></View>*/}
       <ModalContext.Provider
         value={{
