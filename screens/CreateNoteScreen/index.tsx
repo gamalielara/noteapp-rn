@@ -13,7 +13,7 @@ import { NoteInterface } from "../../utils/interfaces";
 import EyeIcon from "../../assets/svg/EyeIcon";
 import SaveIcon from "../../assets/svg/SaveIcon";
 import { Colors } from "../../utils/colors";
-import { ModalContext } from "../../hoc/withModal";
+import withModal, { ModalContext } from "../../hoc/withModal";
 
 const CreateNoteScreen: React.FC = () => {
   const insects = useSafeAreaInsets();
@@ -21,7 +21,9 @@ const CreateNoteScreen: React.FC = () => {
   const [note, setNote] = useState<NoteInterface | null>(null);
   const [isEditable, setIsEditable] = useState<boolean>(false);
 
-  const { showModal } = useContext(ModalContext);
+  const { setShowModal } = useContext(ModalContext);
+
+  console.log(setShowModal);
 
   useEffect(() => {
     if (isCreateMode) {
@@ -41,7 +43,7 @@ const CreateNoteScreen: React.FC = () => {
         <>
           <TouchableOpacity
             style={[styles.button, { marginRight: 10 }]}
-            onPress={() => showModal(true)}
+            onPress={() => setShowModal(true)}
           >
             <EyeIcon />
           </TouchableOpacity>

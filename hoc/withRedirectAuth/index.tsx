@@ -19,4 +19,6 @@ export default (Component: React.FC<any>) => (props: any) => {
     navigation.navigate("Login");
     return null;
   }
+
+  // return <Component {...props} />;
 };

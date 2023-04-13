@@ -4,6 +4,7 @@ export enum Colors {
   BACKGROND = "#252525",
   RED = "#AF0000",
   WHITE = "#FFF",
+  GREEN = "#30BE71",
 }
 
 export enum NoteColors {
