@@ -1,0 +1,67 @@
+import { StyleSheet } from "react-native";
+import { transformToMatrix } from "react-native-svg/lib/typescript/lib/extract/extractTransform";
+import { Colors } from "../../utils/colors";
+
+export const styles = StyleSheet.create({
+  modalBox: {
+    width: "75%",
+    height: 200,
+    position: "absolute",
+    top: "40%",
+    left: "13%",
+    zIndex: 999,
+    backgroundColor: Colors.WHITE,
+    borderRadius: 20,
+    padding: 20,
+  },
+  showModalContainer: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    flex: 1,
+    backgroundColor: "#000",
+    opacity: 0.75,
+    width: "100%",
+    height: "100%",
+    zIndex: 99,
+  },
+  bottomBottons: {
+    // width: "100%",
+    height: 45,
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 10,
+    marginHorizontal: 15,
+  },
+  closeButton: {
+    backgroundColor: Colors.GREEN,
+    flex: 1,
+    height: "100%",
+    borderRadius: 10,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginLeft: 5,
+    padding: 10,
+  },
+  discardButton: {
+    backgroundColor: Colors.RED,
+    flex: 1,
+    height: "100%",
+    borderRadius: 10,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 5,
+    padding: 10,
+  },
+  buttonText: {
+    color: Colors.WHITE,
+  },
+});

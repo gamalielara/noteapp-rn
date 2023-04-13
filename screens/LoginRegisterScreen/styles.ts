@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 5,
     paddingVertical: 10,
-    width: "75%",
+    width: 250,
     marginLeft: "auto",
     marginRight: "auto",
     marginTop: 20,

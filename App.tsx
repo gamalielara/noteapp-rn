@@ -6,9 +6,13 @@ import LoginRegisterScreen from "./screens/LoginRegisterScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
-import { AuthContext, AuthContextProvider } from "./modules/auth/authContext";
+import { AuthContextProvider } from "./modules/auth/authContext";
+import ProfileScreen from "./screens/ProfileScreen";
+import CreateNoteScreen from "./screens/CreateNoteScreen";
+import { NoteContextProvider } from "./modules/note/noteContext";
+import withModal from "./hoc/withModal";
 
-export default function App() {
+function App() {
   const [isFontLoaded, setIsFontLoaded] = useState(false);
 
   const Stack = createNativeStackNavigator();
@@ -17,12 +21,19 @@ export default function App() {
     return (
       <SafeAreaProvider>
         <AuthContextProvider>
-          <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
-              <Stack.Screen name={"Login"} component={LoginRegisterScreen} />
-              <Stack.Screen name={"Home"} component={HomeScreen} />
-            </Stack.Navigator>
-          </NavigationContainer>
+          <NoteContextProvider>
+            <NavigationContainer>
+              <Stack.Navigator screenOptions={{ headerShown: false }}>
+                <Stack.Screen name={"Home"} component={HomeScreen} />
+                <Stack.Screen name={"Login"} component={LoginRegisterScreen} />
+                <Stack.Screen name={"Profile"} component={ProfileScreen} />
+                <Stack.Screen
+                  name={"Create Note"}
+                  component={CreateNoteScreen}
+                />
+              </Stack.Navigator>
+            </NavigationContainer>
+          </NoteContextProvider>
         </AuthContextProvider>
       </SafeAreaProvider>
     );
@@ -36,3 +47,4 @@ export default function App() {
     );
   }
 }
+export default withModal(App);

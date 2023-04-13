@@ -8,6 +8,7 @@ import { useContext, useEffect, useState } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { AuthContext } from "../../modules/auth/authContext";
 import { setUser } from "../../modules/auth/authAction";
+import useFetchUserNotes from "../../hooks/useFetchUserNotes";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -39,7 +40,7 @@ const LoginRegisterScreen: React.FC<NativeStackScreenProps<any, any>> = ({
     if (user) {
       navigation.navigate("Home");
     }
-  }, [accToken]);
+  }, [accToken, user]);
 
   const fetchUserInfo = async () => {
     const res = await fetch("https://www.googleapis.com/userinfo/v2/me", {
@@ -56,7 +57,7 @@ const LoginRegisterScreen: React.FC<NativeStackScreenProps<any, any>> = ({
       email: userResponse.email,
     };
     dispatch!(setUser(userInfo));
-    // setUser(userInfo);
+    // navigation.navigate("Home");
   };
 
   const insets = useSafeAreaInsets();

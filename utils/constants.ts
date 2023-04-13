@@ -5,6 +5,12 @@ export const SET_DEVICE_FRAME_HEIGHT = (bottomInsets: number) => {
 
 export const USER_ID = "-NRMxK2bP2MNcf525EQr";
 
+export const NOTE_TITILE_CREATE_NEW = "Note Title Here";
+
+export const NOTE_BODY_CREATE_NEW = "Create your notes here....";
+
+export const CLIENT_IP_ADDRESS = "192.168.1.4";
+
 const test = {
   sheujebkjebuk: {
     username: "...",
